@@ -1,5 +1,9 @@
 require 'dashing'
 
+use Rack::Auth::Basic do |username, password|
+  username == ENV['BASIC_AUTH_USERNAME'] && password == ENV['BASIC_AUTH_PASSWORD']
+end
+
 configure do
   set :auth_token, 'qphMs7wSzF14wH5P8zC3'
   set :default_dashboard, 'home'
